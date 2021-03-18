@@ -17,7 +17,7 @@ var firebaseConfig = {
     measurementId: "G-DY0534E4MV"
   };
 
-//   // Initialize Firebase
+// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore(); 
         
@@ -37,50 +37,50 @@ router.get('/boardList',function(req, res, next) {
          });
 });
  
-// router.get('/boardRead',function(req, res, next) {
-//     db.collection('board').doc(req.query.brdno).get()
-//         .then((doc) => {
-//             var childData = doc.data();
+router.get('/boardRead',function(req, res, next) {
+    db.collection('board').doc(req.query.brdno).get()
+        .then((doc) => {
+            var childData = doc.data();
              
-//             childData.brddate = dateFormat(childData.brddate,"yyyy-mm-dd hh:mm");
-//             res.render('board2/boardRead', {row: childData});
-//         })
-// });
+            childData.brddate = dateFormat(childData.brddate,"yyyy-mm-dd hh:mm");
+            res.render('board2/boardRead', {row: childData});
+        })
+});
  
-// router.get('/boardForm',function(req,res,next){
-//     if (!req.query.brdno) {// new
-//         res.render('board2/boardForm', {row:""});
-//         return;
-//     }
+router.get('/boardForm',function(req,res,next){
+    if (!req.query.brdno) {// new
+        res.render('board2/boardForm', {row:""});
+        return;
+    }
      
-//     // update
-//     db.collection('board').doc(req.query.brdno).get()
-//           .then((doc) => {
-//               var childData = doc.data();
-//               res.render('board2/boardForm', {row: childData});
-//           })
-// });
+    // update
+    db.collection('board').doc(req.query.brdno).get()
+          .then((doc) => {
+              var childData = doc.data();
+              res.render('board2/boardForm', {row: childData});
+          })
+});
  
-// router.post('/boardSave',function(req,res,next){
-//     var postData = req.body;
-//     if (!postData.brdno) { // new
-//         postData.brddate = Date.now();
-//         var doc = db.collection("board").doc();
-//         postData.brdno = doc.id;
-//         doc.set(postData);
-//     }else {               // update
-//         var doc = db.collection("board").doc(postData.brdno);
-//         doc.update(postData);
-//     }
+router.post('/boardSave',function(req,res,next){
+    var postData = req.body;
+    if (!postData.brdno) { // new
+        postData.brddate = Date.now();
+        var doc = db.collection("board").doc();
+        postData.brdno = doc.id;
+        doc.set(postData);
+    }else {               // update
+        var doc = db.collection("board").doc(postData.brdno);
+        doc.update(postData);
+    }
      
-//     res.redirect('boardList');
-// });
+    res.redirect('boardList');
+});
  
-// router.get('/boardDelete',function(req,res,next){
-//     db.collection('board').doc(req.query.brdno).delete()
+router.get('/boardDelete',function(req,res,next){
+    db.collection('board').doc(req.query.brdno).delete()
  
-//     res.redirect('boardList');
-// });
+    res.redirect('boardList');
+});
 
 
 module.exports = router;
