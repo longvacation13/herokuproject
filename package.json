@@ -3,14 +3,30 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"    
+    "start": "node ./bin/www"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "cookie-parser": "~1.4.4",
+    "dateformat": "^4.5.1",
     "debug": "~2.6.9",
-    "ejs": "~2.6.1",
-    "express": "~4.16.1",
+    "ejs": "^2.6.2",
+    "express": "^4.16.4",
+    "firebase": "^8.3.0",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1"
-  }
+  },
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/superukie/herokuproject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/superukie/herokuproject/issues"
+  },
+  "homepage": "https://github.com/superukie/herokuproject#readme",
+  "description": ""
 }
