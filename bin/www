@@ -30,6 +30,14 @@ server.on('error', onError);
 server.on('listening', onListening);
 
 /**
+ * heroku server sleep prevent 
+ * 
+ */
+setInterval(function(){
+  http.get("https://herokuproject-superukie.herokuapp.com/");
+}, 600000); // 10분마다 서버 접속 해서 sleep 방지 
+
+/**
  * Normalize a port into a number, string, or false.
  */
 
